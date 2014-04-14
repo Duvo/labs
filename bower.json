@@ -1,0 +1,31 @@
+{
+  "name": "labs",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Duvo/labs",
+  "authors": [
+    "Noémi Salaün"
+  ],
+  "description": "Duvo development labs.",
+  "main": "lib/labs",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "labs",
+    "js",
+    "angular",
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}
