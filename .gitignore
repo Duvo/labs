@@ -3,3 +3,6 @@ node_modules
 
 ### Linux ###
 *~
+
+### Bower ###
+bower_components

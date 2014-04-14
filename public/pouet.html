@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Web services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <style type="text/css">
+      .vote {
+        font-size: 2em; 
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body class="container" ng-app ng-controller="VoteCtrl" ng-cloak>
+
+    <h1 class="vote">Message</h1>
+    <input type="text" ng-model="input" ng-change="change()">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="/bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script>
+
+          function VoteCtrl($scope) {
+            var host = location.origin;
+
+            var socket = io.connect(host);
+
+            $scope.input = '';
+
+            $scope.change = function() {
+              console.log('gogogo');
+              socket.emit('input', $scope.input);
+            };
+
+            socket.on('input', function(msg) {
+              $scope.input = msg;
+              $scope.$apply();
+            });
+          };
+    </script>
+  </body>
+</html>
