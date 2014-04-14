@@ -1,0 +1,31 @@
+{
+  "name": "labs",
+  "version": "0.1.0",
+  "description": "Duvo development labs.",
+  "main": "lib/labs",
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Duvo/labs.git"
+  },
+  "keywords": [
+    "labs",
+    "js",
+    "angular",
+    "node"
+  ],
+  "author": "Noémi Salaün",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Duvo/labs/issues"
+  },
+  "homepage": "https://github.com/Duvo/labs",
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.4"
+  }
+}
