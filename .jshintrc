@@ -12,5 +12,10 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "node": true,
+  "globals": {
+    "angular": false,
+    "location": false,
+    "io": true
+  }
 }

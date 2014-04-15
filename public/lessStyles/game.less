@@ -1,0 +1,27 @@
+#grid {
+  width: 1000px;
+  position: relative;
+  
+  .border {
+    position: absolute;
+    border: 1px solid #666;
+    
+    .line {
+      
+      .cell {
+        display: inline-block;
+        border: 1px solid #666;
+        text-align: center;
+        .user-select(none);
+        cursor: pointer;
+        
+        &.selected {
+          background-color: #d48989;
+        }
+        &.selectedOther {
+          color: darkgoldenrod;
+        }
+      }
+    }
+  }
+}

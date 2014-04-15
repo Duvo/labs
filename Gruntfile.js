@@ -16,6 +16,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    less: {
+      dev: {
+        files: {
+          'public/styles/main.css' : 'public/lessStyles/main.less'
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc',        
@@ -26,7 +33,7 @@ module.exports = function(grunt) {
       public: {
         src: ['public/**/*.js'],
         options: {
-          ignores: ['public/bower_components/**/*']
+          ignores: ['**/bower_components/**/*']
         }
       },
       server: {
@@ -37,33 +44,25 @@ module.exports = function(grunt) {
       },
     },
     watch: {
+      styles: {
+        files: ['public/lessStyles/**/*.less'],
+        tasks: ['less']
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile'],
-        options: {
-          livereload: true
-        }
       },
       public: {
         files: '<%= jshint.public.src %>',
-        tasks: ['jshint:public'],
-        options: {
-          livereload: true
-        }
+        tasks: ['jshint:public']
       },
       server: {
         files: '<%= jshint.server.src %>',
         tasks: ['jshint:server', 'nodeunit'],
-        options: {
-          livereload: true
-        }
       },
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit'],
-        options: {
-          livereload: true
-        }
       },
     },    
     nodemon: {
@@ -89,6 +88,7 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
@@ -96,6 +96,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-task');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'concurrent']);
+  grunt.registerTask('default', ['less', 'jshint', 'nodeunit', 'concurrent']);
 
 };

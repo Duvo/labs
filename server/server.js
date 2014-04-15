@@ -17,12 +17,24 @@ var io = require('socket.io').listen(server);
 
 server.listen(config.port);
 
-/*app.get('/', function (req, res) {
-  res.sendfile(config.root + '/public/pouet.html');
-});*/
-
-app.use(express.static(config.root + '/public/'));
+var maxPlayerId = 1;
+var players = [];
 
 io.sockets.on('connection', function(socket) {
-  require('./routes/socket')(io.sockets, socket);
+  var newPlayer = {id: maxPlayerId++};
+  console.log('PLAYER ' + newPlayer.id + ' JOIN THE GAME !!!!!!!!');
+
+  socket.emit('helloPlayer', {
+    player: newPlayer,
+    others: players
+  });
+  players.push(newPlayer);
+
+  socket.broadcast.emit('playerJoin', newPlayer.id);
+  socket.on(newPlayer.id, function(grid) {
+    newPlayer.grid = grid;
+    socket.broadcast.emit(newPlayer.id, newPlayer.grid);
+  });
 });
+
+app.use(express.static(config.root + '/public/'));

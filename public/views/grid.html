@@ -1,0 +1,9 @@
+<div class="border" ng-mouseup="stopSelect()" ng-mouseleave="stopSelect()">
+  <div class="line" ng-repeat="row in grid track by $index" ng-style="{height: cellSize()}">
+    <div class="cell" ng-class="{selected: cell.selected, selectedOther: selectedOther(cell)}" ng-repeat="cell in row track by $index"
+         ng-style="{lineHeight: cellSize(), width: cellSize(), height: cellSize(), fontSize: cellSize()}"
+         ng-mousedown="startSelect(cell)" ng-mouseover="select(cell)">
+      {{cell.value}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body ng-app="labsApp">
+    <div class="container">
+      <div id="game" ng-controller="GameController">
+        <div id="grid" grid></div>
+      </div>
+    </div>
+
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="/bower_components/socket.io-client/dist/socket.io.js"></script>
+    
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/game.js"></script>
+    <script src="scripts/directives/grid.js"></script>
+  </body>
+</html>
