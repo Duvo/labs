@@ -8,6 +8,14 @@ module.exports = function(grunt) {
     nodeunit: {
       files: ['test/**/*_test.js'],
     },
+    bower: {
+      install: {
+        options: {
+          copy: false,
+          verbose: true
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc',        
@@ -85,6 +93,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-bower-task');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit', 'concurrent']);

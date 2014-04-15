@@ -31,7 +31,10 @@
     "grunt-nodemon": "^0.2.1",
     "express": "^4.0.0",
     "grunt-concurrent": "^0.5.0",
-    "socket.io": "^0.9.16"
+    "socket.io": "^0.9.16",
+    "grunt-bower-task": "^0.3.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "grunt-bower-install": "^1.4.0"
+  }
 }
