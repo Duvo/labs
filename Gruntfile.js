@@ -96,6 +96,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-task');
 
   // Default task.
-  grunt.registerTask('default', ['less', 'jshint', 'nodeunit', 'concurrent']);
+  grunt.registerTask('default', ['bower:install', 'less', 'jshint', 'nodeunit', 'concurrent']);
 
 };
