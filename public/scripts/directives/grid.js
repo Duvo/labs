@@ -9,7 +9,8 @@ angular.module('labsApp').directive('grid', function() {
       var leftBorder = Math.ceil(parseFloat(elBorder.css('border-left-width')));
       var rightBorder = Math.ceil(parseFloat(elBorder.css('border-right-width')));
       scope.cellSize = function() {
-        return Math.floor((scope.gridWidth - leftBorder - rightBorder) / scope.width) + 'px';
+        console.log(leftBorder);
+        return Math.floor((scope.gridWidth - (leftBorder+rightBorder) * 5) / scope.grid[0].length) + 'px';
       };
     }
   };

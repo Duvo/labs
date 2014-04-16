@@ -2,22 +2,13 @@
 
 var Player = require('../models/player');
 
-var players = [];
-
-exports.newPlayer = function(socket, fn) {
-  var player = new Player();
-  socket.player = player;
-
-  console.log('PLAYER ' + player.id + ' CONNECTED');
-  fn({player: player, others: players});
-
-  players.push(player);
-
-  socket.broadcast.emit('playerJoin', player.id);
+var players = {
+  newPlayer: function(socket, msg, fn) {
+    var player = new Player();
+    console.log('PLAYER ' + player.id + ' CONNECTED');
+    socket.player = player;
+    fn(player);    
+  }
 };
 
-exports.changeGrid = function(socket, grid) {
-  var player = socket.player;
-  player.grid = grid;
-  socket.broadcast.emit(player.id, player.grid);
-};
+module.exports = players;

@@ -1,8 +1,12 @@
 'use strict';
 
 function Player() {
-  this.id = Player.lastPlayerId++;
+  this.id = Player.newId();
 }
-Player.lastPlayerId = 1;
+
+Player._autoInc = 1;
+Player.newId = function() {
+  return Player._autoInc++;
+};
 
 module.exports = Player;
