@@ -1,7 +1,7 @@
 angular.module('labsApp', []).controller('GameController', ['$scope', function($scope) {
     'use strict';
 
-    var newGrid = function(values) {      
+    var newGrid = function(values) {
       var grid = [];
       for (var i = 0; i < values.length; i++) {
         grid[i] = [];
