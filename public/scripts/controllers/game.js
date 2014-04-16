@@ -1,7 +1,16 @@
 angular.module('labsApp', []).controller('GameController', ['$scope', function($scope) {
     'use strict';
-    $scope.height = 2;
-    $scope.width = 5;
+
+    var values = [
+      ['B', 'O', 'N', 'D', 'T'],
+      ['A', 'G', 'J', 'I', 'U'],
+      ['B', 'A', 'O', 'R', 'O'],
+      ['A', 'R', 'U', 'A', 'T'],
+      ['T', 'R', 'E', 'T', 'O']
+    ];
+
+    $scope.height = values.length;
+    $scope.width = values[0].length;
 
     var initGrid = [];
     for (var i = 0; i < $scope.height; i++) {
@@ -9,7 +18,7 @@ angular.module('labsApp', []).controller('GameController', ['$scope', function($
       for (var j = 0; j < $scope.width; j++) {
         initGrid[i][j] = {
           selected: false,
-          value: 'A',
+          value: values[i][j],
           i: i,
           j: j
         };
@@ -30,27 +39,27 @@ angular.module('labsApp', []).controller('GameController', ['$scope', function($
 
     var host = location.origin;
     var socket = io.connect(host);
-    socket.on('helloPlayer', function(hello) {
-      var playerId = hello.player.id;
-      $scope.playerId = playerId;
-      bindPlayer($scope.playerId);
-      hello.others.forEach(function(other) {
-        bindOtherPlayer(other.id);
+    socket.on('connect', function() {
+      socket.emit('newPlayer', null, function(hello) {
+        var playerId = hello.player.id;
+        $scope.playerId = playerId;
+        bindPlayer($scope.playerId);
+        hello.others.forEach(function(other) {
+          bindOtherPlayer(other.id);
+        });
+        socket.on('playerJoin', function(playerId) {
+          if (playerId !== $scope.playerId) {
+            bindOtherPlayer(playerId);
+          }
+        });
       });
     });
-
-    socket.on('playerJoin', function(playerId) {
-      if (playerId !== $scope.playerId) {
-        bindOtherPlayer(playerId);
-      }
-    });
-
     var bindPlayer = function(playerId) {
       $scope.playerId = playerId;
       console.log('I am player ' + $scope.playerId);
 
       $scope.$watch('grid', function(newGrid) {
-        socket.emit($scope.playerId, newGrid);
+        socket.emit('changeGrid', newGrid);
       }, true);
 
       $scope.deselectAll = function() {

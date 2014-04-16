@@ -2,8 +2,11 @@
 
 var path = require('path');
 
+var rootPath = path.normalize(__dirname + '/../');
+
 module.exports = {
   port: 3000,
-  root: path.resolve(__dirname + '/../')
+  root: rootPath,
+  viewsPath: rootPath + 'server/views/'
 };
 

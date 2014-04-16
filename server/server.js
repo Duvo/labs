@@ -8,33 +8,21 @@
 
 'use strict';
 
-var config = require('./config');
+global.CONFIG = require('./config');
 
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-server.listen(config.port);
+app.use(express.static(global.CONFIG.root + '/public/'));
 
-var maxPlayerId = 1;
-var players = [];
-
-io.sockets.on('connection', function(socket) {
-  var newPlayer = {id: maxPlayerId++};
-  console.log('PLAYER ' + newPlayer.id + ' JOIN THE GAME !!!!!!!!');
-
-  socket.emit('helloPlayer', {
-    player: newPlayer,
-    others: players
-  });
-  players.push(newPlayer);
-
-  socket.broadcast.emit('playerJoin', newPlayer.id);
-  socket.on(newPlayer.id, function(grid) {
-    newPlayer.grid = grid;
-    socket.broadcast.emit(newPlayer.id, newPlayer.grid);
-  });
+server.listen(global.CONFIG.port, function() {
+  console.log('Listening on port %d', server.address().port);
 });
 
-app.use(express.static(config.root + '/public/'));
+require('./routes/index')(app);
+
+io.sockets.on('connection', function(socket) {
+  require('./routes/socket')(socket);
+});

@@ -1,11 +1,15 @@
 'use strict';
 
-var input = require('../controllers/input');
+var players = require('../controllers/players');
 
-module.exports = function(sockets, socket) {
-  socket.emit('input', input.val);
-  socket.on('input', function(msg) {
-    input.val = msg;
-    sockets.emit('input', msg);
+module.exports = function(socket) {
+  socket.on('newPlayer', function(msg, fn) {
+    players.newPlayer(socket, fn);
+
+    socket.on('changeGrid', function(grid) {
+      players.changeGrid(socket, grid);
+    });
   });
 };
+
+
