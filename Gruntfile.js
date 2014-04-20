@@ -19,7 +19,8 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
-          'public/styles/main.css' : 'public/lessStyles/main.less'
+          'public/socket/styles/main.css' : 'public/socket/lessStyles/main.less',
+          'public/index/styles/main.css' : 'public/index/lessStyles/main.less'
         }
       }
     },

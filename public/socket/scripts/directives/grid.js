@@ -2,7 +2,7 @@ angular.module('labsApp').directive('grid', function() {
   'use strict';
   return {
     restrict: 'A',
-    templateUrl: '/views/grid.html',
+    templateUrl: '/socket/views/grid.html',
     link: function(scope, element/*, attrs*/) {
       scope.gridWidth = element.width();
       var elBorder = element.find('.border');
