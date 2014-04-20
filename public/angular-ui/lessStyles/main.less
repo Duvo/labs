@@ -1,0 +1,90 @@
+@import "../../lessStyles/mixins.less";
+
+.row {
+    margin-bottom: 30px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.actionnable {
+    color: #0288b8;
+    font-weight: bold;
+}
+
+.tab {
+    border: #aaa solid 1px;
+    padding-bottom: 15px;
+    input {
+        padding-left: 15px;
+    }
+
+    .sub-tab {
+        border: #ccc solid 1px;
+    }    
+
+    &#draggable-tab {
+        #dragWindow {
+            margin-top: 5px;
+            height: 200px;
+            background: #ddd;
+            border: #aaa solid 1px;
+        }
+
+        #myDraggable{
+            border: black 1px solid;
+            cursor: move;
+        }
+    }
+
+    &#sortable-tab {
+        .ui-sortable {
+            li {
+                cursor: move;
+            }
+        }
+
+        h3 {
+            &.colored {
+                color: #cf0000;
+                text-shadow: 0 0 10px #f88, 0 0 5px #c55;
+            }
+            .transition-duration(0.5s);
+        }
+
+        #sortable-tada {
+            li {
+                &.colorA {
+                    color: #449d44;
+                }
+                &.colorB {
+                    color: #ac2925;
+                }
+            }
+        }
+        
+        .mySortable {
+            min-height: 20px;
+        }
+
+        #firstSortable {
+            padding-left: 15px;
+            margin-bottom: 5px;
+        }
+    }
+
+    &#nested-tab {
+        .nested-tab {
+            border: #f88 solid 1px;
+            padding: 0 15px 15px 15px;
+            > .nested-tab {
+                margin-top: 15px;
+            }
+        }
+    }
+
+    &#comingSoon-tab {
+        color: #999;
+    }
+}

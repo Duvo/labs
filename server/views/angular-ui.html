@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <base href="/angular-ui">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/angular-ui/styles/main.css">
+  </head>
+  <body ng-app="angularUiApp">
+    <div class="container" ng-controller="MainController">
+      <div class="row">
+        <section id="draggable-tab" ng-controller="UiDraggableController" class="tab col-sm-4">
+          <h2><span class="glyphicon glyphicon-move"></span> Draggable</h2>
+          <div class="row">
+            <div class="col-sm-12">
+              <form class="form-inline" role="form">
+                <label class="col-sm-1 control-label" for="posX">x</label>
+                <input class="actionnable col-sm-3" type="text" id="posX" ng-model="myBox.x">
+                <label class="col-sm-1 control-label" for="posY">y</label>
+                <input class="actionnable col-sm-3" type="text" id="posY" ng-model="myBox.y">
+              </form>
+            </div>
+          </div>
+
+          <div id="dragWindow">
+            <span id="myDraggable" class="actionnable" model="myBox" draggable="draggableOptions" ng-style="{top: myBox.y + 'px', left: myBox.x + 'px'}">
+              Drag me !
+            </span>
+          </div>
+        </section>
+        <section id="sortable-tab" ng-controller="UiSortableController" class="tab col-sm-4">
+          <h2><span class="glyphicon glyphicon-list"></span> Sortables</h2>
+          <label for="firstSortable">First item value </label>
+          <input class="actionnable" id="firstSortable" type="text" ng-model="sortableItemsA[0].text">
+          <div class="sub-tab col-sm-6">
+            <h3 ng-class="{colored: coloredA}">Sort me...</h3>
+            <ul class="mySortable" ui-sortable="sortableOptions" ng-model="sortableItemsA">
+              <li class="actionnable" ng-repeat="item in sortableItemsA">{{item.index}} - {{item.text}}</li>
+            </ul>
+            <h3 ng-class="{colored: coloredB}">...with me</h3>
+            <ul class="mySortable" ui-sortable="sortableOptions" ng-model="sortableItemsB">
+              <li class="actionnable" ng-repeat="item in sortableItemsB">{{item.index}} - {{item.text}}</li>
+            </ul>
+          </div>        
+          <div id="sortable-tada" class="sub-tab col-sm-6">
+            <h3>Taaaa...</h3>
+            <ul>
+              <li ng-class="'color' + item.list" ng-repeat="item in sortableItemsA">{{item.index}} - {{item.text}}</li>
+            </ul>
+            <h3>...daaaa!!!</h3>
+            <ul>
+              <li ng-class="'color' + item.list" ng-repeat="item in sortableItemsB">{{item.index}} - {{item.text}}</li>
+            </ul>
+          </div>
+
+        </section>
+        <section id="nested-tab" ng-controller="UiNestedController" class="tab col-sm-4">
+          <h2><span class="glyphicon glyphicon-link"></span> Nested scopes</h2>
+          <div class="nested-tab">
+            <h3>Main Controller</h3>
+            <input class="actionnable" type="text" ng-model="main.value">
+            <button class="actionnable" type="button" ng-click="change()">Change</button>
+            <div ng-controller="UiNestedSubController" class="nested-tab">
+              <h3>Sub Controller</h3>
+              <input class="actionnable" type="text" ng-model="main.value">
+              <button class="actionnable" type="button" ng-click="change()">Change</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="row">
+        <section id="comingSoon-tab" ng-controller="UiComingSoonController" class="tab col-sm-4">
+          <h2><span class="glyphicon glyphicon-time"></span> Coming soon</h2>
+        </section>
+      </div>
+    </div>
+
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="/bower_components/angular-ui-sortable/sortable.js"></script>
+
+    <script src="/angular-ui/scripts/app.js"></script>
+    <script src="/angular-ui/scripts/controllers/main.js"></script>
+    <script src="/angular-ui/scripts/directives/draggable.js"></script>
+  </body>
+</html>

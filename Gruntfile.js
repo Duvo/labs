@@ -20,6 +20,7 @@ module.exports = function(grunt) {
       dev: {
         files: {
           'public/socket/styles/main.css' : 'public/socket/lessStyles/main.less',
+          'public/angular-ui/styles/main.css' : 'public/angular-ui/lessStyles/main.less',
           'public/index/styles/main.css' : 'public/index/lessStyles/main.less'
         }
       }
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
     },
     watch: {
       styles: {
-        files: ['public/lessStyles/**/*.less'],
+        files: ['public/**/*.less'],
         tasks: ['less']
       },
       gruntfile: {

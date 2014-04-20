@@ -30,6 +30,7 @@
     "socket.io-client": "~0.9.16",
     "es5-shim": "~2.3.0",
     "json3": "~3.3.1",
-    "angular": "~1.2.16"
+    "angular": "~1.2.16",
+    "angular-ui-sortable": "~0.12.4"
   }
 }
