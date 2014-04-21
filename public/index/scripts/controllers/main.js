@@ -1,4 +1,4 @@
-angular.module('indexApp', []).controller('MainController', ['$scope', function($scope) {
+angular.module('indexApp').controller('MainController', ['$scope', function($scope) {
     'use strict';
-    $scope.index = 'Labs index';
+    $scope.title = 'Labs - home';
   }]);

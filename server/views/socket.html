@@ -1,15 +1,37 @@
 <!doctype html>
-<html>
+<html ng-app="socketApp" ng-controller="MainController">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{title}}</title>
     <base href="/socket">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/socket/styles/main.css">
   </head>
-  <body ng-app="labsApp">
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="/img/labs-logo.png" alt="Labs"> Labs</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul id="main-nav" class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/angular-ui">Angular UI</a></li>
+            <li class="active"><a href="/socket">Socket</a></li>
+            <li><a href="/canvas">Canvas</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <div id="game" ng-controller="GameController">
         <div id="grid" grid></div>
@@ -25,8 +47,9 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/socket.io-client/dist/socket.io.js"></script>
-    
+
     <script src="/socket/scripts/app.js"></script>
+    <script src="/socket/scripts/controllers/main.js"></script>
     <script src="/socket/scripts/controllers/game.js"></script>
     <script src="/socket/scripts/directives/grid.js"></script>
   </body>

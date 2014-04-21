@@ -2,7 +2,7 @@ angular.module('angularUiApp').controller('MainController', ['$scope',
   function($scope) {
     'use strict';
     
-    $scope.title = 'Angular UI';
+    $scope.title = 'Labs - Angular UI';
   }
 ]);
 

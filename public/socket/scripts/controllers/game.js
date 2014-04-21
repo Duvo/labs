@@ -1,4 +1,5 @@
-angular.module('labsApp', []).controller('GameController', ['$scope', function($scope) {
+angular.module('socketApp').controller('GameController', ['$scope',
+  function($scope) {
     'use strict';
 
     var newGrid = function(values) {
@@ -29,7 +30,6 @@ angular.module('labsApp', []).controller('GameController', ['$scope', function($
         socket.emit('getGame', null, function(game) {
           $scope.game = game;
           $scope.grid = newGrid($scope.game.grid);
-          console.log($scope.grid);
           $scope.others = [];
           $scope.$apply('grid');
 
@@ -85,4 +85,5 @@ angular.module('labsApp', []).controller('GameController', ['$scope', function($
       return selected;
     };
 
-  }]);
+  }
+]);

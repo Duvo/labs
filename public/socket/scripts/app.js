@@ -1,5 +1,4 @@
 'use strict';
 
-angular.module('labsApp', [])
-        .config(function() {
+angular.module('socketApp', []).config(function() {
 });

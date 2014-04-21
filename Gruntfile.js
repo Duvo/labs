@@ -21,7 +21,8 @@ module.exports = function(grunt) {
         files: {
           'public/socket/styles/main.css' : 'public/socket/lessStyles/main.less',
           'public/angular-ui/styles/main.css' : 'public/angular-ui/lessStyles/main.less',
-          'public/index/styles/main.css' : 'public/index/lessStyles/main.less'
+          'public/index/styles/main.css' : 'public/index/lessStyles/main.less',
+          'public/canvas/styles/main.css' : 'public/canvas/lessStyles/main.less',
         }
       }
     },

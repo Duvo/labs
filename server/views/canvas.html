@@ -1,14 +1,14 @@
 <!doctype html>
-<html ng-app="indexApp" ng-controller="MainController">
+<html ng-app="canvasApp" ng-controller="MainController">
   <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
-    <base href="/index">
+    <base href="/canvas">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/index/styles/main.css">
+    <link rel="stylesheet" href="/canvas/styles/main.css">
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -23,16 +23,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul id="main-nav" class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/angular-ui">Angular UI</a></li>
             <li><a href="/socket">Socket</a></li>
-            <li><a href="/canvas">Canvas</a></li>
+            <li class="active"><a href="/canvas">Canvas</a></li>
           </ul>
         </div>
       </div>
     </nav>
-
-
+    
     <div class="container">
       <h1>{{title}}</h1>
     </div>
@@ -45,8 +44,8 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
-
-    <script src="/index/scripts/app.js"></script>
-    <script src="/index/scripts/controllers/main.js"></script>
+    
+    <script src="/canvas/scripts/app.js"></script>
+    <script src="/canvas/scripts/controllers/main.js"></script>
   </body>
 </html>

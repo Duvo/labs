@@ -1,16 +1,38 @@
 <!doctype html>
-<html>
+<html ng-app="angularUiApp" ng-controller="MainController">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{title}}</title>
     <base href="/angular-ui">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/angular-ui/styles/main.css">
   </head>
-  <body ng-app="angularUiApp">
-    <div class="container" ng-controller="MainController">
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="/img/labs-logo.png" alt="Labs"> Labs</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul id="main-nav" class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/angular-ui">Angular UI</a></li>
+            <li><a href="/socket">Socket</a></li>
+            <li><a href="/canvas">Canvas</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>{{title}}</h1>
       <div class="row">
         <section id="draggable-tab" ng-controller="UiDraggableController" class="tab col-sm-4">
           <h2><span class="glyphicon glyphicon-move"></span> Draggable</h2>
