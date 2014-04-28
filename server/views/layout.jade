@@ -34,16 +34,12 @@ html(ng-app="app", ng-controller="MainController")
         div(class=["collapse", "navbar-collapse"])
           ul(id="main-nav", class=["nav", "navbar-nav"])
             li(class=page==="index" ? "active" : "")
-              a(href="/")
-                | Home
+              a(href="/") Home
             li(class=page==="angular-ui" ? "active" : "")
-              a(href="/angular-ui")
-                | Angular UI
+              a(href="/angular-ui") Angular UI
             li(class=page==="socket" ? "active" : "")
-              a(href="/socket")
-                | Socket
+              a(href="/socket") Socket
             li(class=page==="canvas" ? "active" : "")
-              a(href="/canvas")
-                | Canvas
+              a(href="/canvas") Canvas
 
     block content
