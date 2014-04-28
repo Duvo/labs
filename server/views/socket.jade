@@ -1,0 +1,19 @@
+extends layout
+
+block styles
+  link(rel="stylesheet", href="/socket/styles/main.css")
+
+block scripts  
+  script(src="/bower_components/socket.io-client/dist/socket.io.js")
+
+block content
+  
+  .container
+    h1=title
+    #game(ng-controller="GameController")
+      #grid(grid) 
+
+  script(src="/socket/scripts/app.js")
+  script(src="/socket/scripts/controllers/main.js")
+  script(src="/socket/scripts/controllers/game.js")
+  script(src="/socket/scripts/directives/grid.js")

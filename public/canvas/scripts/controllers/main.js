@@ -1,4 +1,4 @@
-angular.module('canvasApp').controller('MainController', ['$scope',
+angular.module('app').controller('MainController', ['$scope',
   function($scope) {
     'use strict';
     $scope.title = 'Labs - Canvas';

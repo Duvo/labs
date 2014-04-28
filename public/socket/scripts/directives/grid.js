@@ -1,4 +1,4 @@
-angular.module('socketApp').directive('grid', function() {
+angular.module('app').directive('grid', function() {
   'use strict';
   return {
     restrict: 'A',

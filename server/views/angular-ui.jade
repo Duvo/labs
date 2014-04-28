@@ -1,0 +1,73 @@
+extends layout
+
+block styles
+  link(rel="stylesheet", href="/angular-ui/styles/main.css")
+
+block scripts  
+  <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+  <script src="/bower_components/angular-ui-sortable/sortable.js"></script>
+
+block content
+  
+  .container
+    h1=title
+    .row
+      section#draggable-tab(ng-controller="UiDraggableController", class=["tab", "col-sm-4"])
+        h2
+          span(class=["glyphicon", "glyphicon-move"])
+          |  Draggable
+        .row
+          div(class="col-sm-12")
+            form.form-inline(role="form")
+              label(class=["col-sm-1", "control-label"], for="posX") x
+              input(class=["actionnable", "col-sm-3"], type="text", id="posX", ng-model="myBox.x")
+              label(class=["col-sm-1", "control-label"], for="posY") y
+              input(class=["actionnable", "col-sm-3"], type="text", id="posY", ng-model="myBox.y")
+
+        #dragWindow
+          span#myDraggable.actionnable(model="myBox", draggable="draggableOptions", ng-style="{top: myBox.y + 'px', left: myBox.x + 'px'}")
+            | Drag me !
+      section#sortable-tab(ng-controller="UiSortableController", class=["tab", "col-sm-4"])
+        h2
+          span(class=["glyphicon", "glyphicon-list"])
+          |  Sortables
+        label(for="firstSortable") First item value
+        input#firstSortable.actionnable(type="text", ng-model="sortableItemsA[0].text")
+        div(class="sub-tab col-sm-6")
+          h3(ng-class="{colored: coloredA}") Sort me...
+          ul.mySortable(ui-sortable="sortableOptions", ng-model="sortableItemsA")
+            li.actionnable(ng-repeat="item in sortableItemsA") {{item.index}} - {{item.text}}
+          h3(ng-class="{colored: coloredB}") ...with me
+          ul.mySortable(ui-sortable="sortableOptions", ng-model="sortableItemsB")
+            li.actionnable(ng-repeat="item in sortableItemsB") {{item.index}} - {{item.text}}
+     
+        #sortable-tada(class=["sub-tab", "col-sm-6"])
+          h3 Taaaa...
+          ul
+            li(ng-class="'color' + item.list", ng-repeat="item in sortableItemsA") {{item.index}} - {{item.text}}
+          h3 ...daaaa!!!
+          ul
+            li(ng-class="'color' + item.list", ng-repeat="item in sortableItemsB") {{item.index}} - {{item.text}}
+
+      section#nested-tab(ng-controller="UiNestedController", class=["tab", "col-sm-4"])
+        h2
+          span(class=["glyphicon", "glyphicon-link"])
+          |  Nested scopes
+        .nested-tab
+          h3 Main Controller
+          input.actionnable(type="text", ng-model="main.value")
+          button.actionnable(type="button", ng-click="change()") Change
+          .nested-tab(ng-controller="UiNestedSubController")
+            h3 Sub Controller
+            input.actionnable(type="text" ng-model="main.value")
+            button.actionnable(type="button", ng-click="change()") Change
+
+    .row
+      section#comingSoon(ng-controller="UiComingSoonController", class=["tab", "col-sm-4"])
+        h2
+          span(class=["glyphicon", "glyphicon-time"])
+          |  Coming soon    
+
+  script(src="/angular-ui/scripts/app.js")
+  script(src="/angular-ui/scripts/controllers/main.js")
+  script(src="/angular-ui/scripts/directives/draggable.js")

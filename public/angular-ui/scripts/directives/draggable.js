@@ -1,4 +1,4 @@
-angular.module('angularUiApp').directive('draggable', function() {
+angular.module('app').directive('draggable', function() {
   'use strict';
   
   return {

@@ -1,4 +1,4 @@
-angular.module('socketApp').controller('GameController', ['$scope',
+angular.module('app').controller('GameController', ['$scope',
   function($scope) {
     'use strict';
 

@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('canvasApp', []).config(function() {
+angular.module('app', []).config(function() {
 });

@@ -15,6 +15,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
+app.set('views', global.CONFIG.viewsPath);
+app.set('view engine', 'jade');
 app.use(express.static(global.CONFIG.root + '/public/'));
 
 server.listen(global.CONFIG.port, function() {

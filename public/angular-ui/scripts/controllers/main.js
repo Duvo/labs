@@ -1,4 +1,4 @@
-angular.module('angularUiApp').controller('MainController', ['$scope',
+angular.module('app').controller('MainController', ['$scope',
   function($scope) {
     'use strict';
     
@@ -6,7 +6,7 @@ angular.module('angularUiApp').controller('MainController', ['$scope',
   }
 ]);
 
-angular.module('angularUiApp').controller('UiDraggableController', ['$scope',
+angular.module('app').controller('UiDraggableController', ['$scope',
   function($scope) {
     'use strict';
 
@@ -15,7 +15,7 @@ angular.module('angularUiApp').controller('UiDraggableController', ['$scope',
   }
 ]);
 
-angular.module('angularUiApp').controller('UiSortableController', ['$scope', '$filter', '$timeout',
+angular.module('app').controller('UiSortableController', ['$scope', '$filter', '$timeout',
   function($scope, $filter, $timeout) {
     'use strict';
 
@@ -66,7 +66,7 @@ angular.module('angularUiApp').controller('UiSortableController', ['$scope', '$f
   }
 ]);
 
-angular.module('angularUiApp').controller('UiNestedController', ['$scope',
+angular.module('app').controller('UiNestedController', ['$scope',
   function($scope) {
     'use strict';
 
@@ -78,7 +78,7 @@ angular.module('angularUiApp').controller('UiNestedController', ['$scope',
   }
 ]);
 
-angular.module('angularUiApp').controller('UiNestedSubController', ['$scope',
+angular.module('app').controller('UiNestedSubController', ['$scope',
   function($scope) {
     'use strict';
 
@@ -88,7 +88,7 @@ angular.module('angularUiApp').controller('UiNestedSubController', ['$scope',
   }
 ]);
 
-angular.module('angularUiApp').controller('UiComingSoonController', ['$scope',
+angular.module('app').controller('UiComingSoonController', ['$scope',
   function($scope) {
     'use strict';
     $scope.msg = 'Coming soon';

@@ -1,17 +1,17 @@
 'use strict';
 
 exports.index = function(req, res) {
-  res.sendfile(global.CONFIG.viewsPath + 'index.html');
+  res.render('index', {page: 'index', title: 'Labs - Index'});
 };
 
 exports.socket = function(req, res) {
-  res.sendfile(global.CONFIG.viewsPath + 'socket.html');
+  res.render('socket', {page: 'socket', title: 'Labs - Socket'});
 };
 
 exports.canvas = function(req, res) {
-  res.sendfile(global.CONFIG.viewsPath + 'canvas.html');
+  res.render('canvas', {page: 'canvas', title: 'Labs - Canvas'});
 };
 
 exports.angularUI = function(req, res) {
-  res.sendfile(global.CONFIG.viewsPath + 'angular-ui.html');
+  res.render('angular-ui', {page: 'angular-ui', title: 'Labs - AngularUi'});
 };

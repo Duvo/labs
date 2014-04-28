@@ -5,6 +5,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     cfg: require('./server/config.js').port,
+    update_json: {
+      bower: {
+        src: 'package.json',
+        dest: 'bower.json',
+        fields: [
+          'name',
+          'main',
+          'version',
+          'description',     
+          'repository',
+          'author',
+          'keywords',
+          'license',
+          'homepage',
+        ]
+      }
+    },
     nodeunit: {
       files: ['test/**/*_test.js'],
     },
@@ -19,6 +36,7 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
+          'public/styles/layout.css' : 'public/lessStyles/layout.less',
           'public/socket/styles/main.css' : 'public/socket/lessStyles/main.less',
           'public/angular-ui/styles/main.css' : 'public/angular-ui/lessStyles/main.less',
           'public/index/styles/main.css' : 'public/index/lessStyles/main.less',
@@ -47,6 +65,10 @@ module.exports = function(grunt) {
       },
     },
     watch: {
+      json: {
+        files: ['package.json'],
+        tasks: ['update_json']
+      },
       styles: {
         files: ['public/**/*.less'],
         tasks: ['less']
@@ -97,8 +119,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-update-json');
 
   // Default task.
-  grunt.registerTask('default', ['bower:install', 'less', 'jshint', 'nodeunit', 'concurrent']);
+  grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'nodeunit', 'concurrent']);
 
 };
