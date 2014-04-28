@@ -1,6 +1,9 @@
 Labs
 ==========
 [![Build Status](https://travis-ci.org/Duvo/labs.svg?branch=master)](https://travis-ci.org/Duvo/labs)
+[![Coverage Status](https://coveralls.io/repos/Duvo/labs/badge.png)](https://coveralls.io/r/Duvo/labs)
+[![Dependency Status](https://david-dm.org/Duvo/labs.svg?theme=shields.io)](https://david-dm.org/Duvo/labs)
+[![devDependency Status](https://david-dm.org/Duvo/labs/dev-status.svg?theme=shields.io)](https://david-dm.org/Duvo/labs#info=devDependencies)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 Duvo development labs.
