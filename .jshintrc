@@ -16,6 +16,13 @@
   "globals": {
     "angular": false,
     "location": false,
-    "io": true
+    "io": true,
+    /* TEST */
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false
   }
 }

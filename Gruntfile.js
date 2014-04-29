@@ -22,9 +22,6 @@ module.exports = function(grunt) {
         ]
       }
     },
-    nodeunit: {
-      files: ['test/**/*_test.js'],
-    },
     bower: {
       install: {
         options: {
@@ -61,7 +58,10 @@ module.exports = function(grunt) {
         src: ['server/**/*.js']
       },
       test: {
-        src: ['test/**/*.js']
+        src: ['test/**/*.js'],
+        options: {
+          ignores: ['test/coverage/**/*.js']
+        }
       },
     },
     watch: {
@@ -108,11 +108,72 @@ module.exports = function(grunt) {
       options: {
         logConcurrentOutput: true
       }
-    }
+    },
+    clean: {
+      coverage: {
+        src: ['test/coverage']
+      }
+    },
+    /** TESTS **/
+    env: {
+      coverage: {
+        APP_DIR_FOR_CODE_COVERAGE: '../test/coverage/instrument/server/'
+      }
+    },
+    instrument: {
+      files: 'server/**/*.js',
+      options: {
+        lazy: true,
+        basePath: 'test/coverage/instrument/'
+      }
+    },
+    mochaTest: {
+      options: {
+          reporter: 'spec'
+        },
+      all: {
+        src: ['test/**/*.js']
+      },
+      unit: {
+        src: ['test/unit/**/*.js']
+      }
+    },
+    storeCoverage: {
+      options: {
+        dir: 'test/coverage/reports'
+      }
+    },
+    makeReport: {
+      src: 'test/coverage/reports/**/*.json',
+      options: {
+        type: 'lcov',
+        dir: 'test/coverage/reports',
+        print: 'detail'
+      }
+    },
+    coverage: {
+      options: {
+        thresholds: {
+          'statements': 50,
+          'branches': 0,
+          'lines': 50,
+          'functions': 10
+        },
+        dir: 'coverage',
+        root: 'test'
+      }
+    },
+    coveralls: {
+      options: {        
+        force: true
+      },
+      mocha: {
+        src: 'test/coverage/reports/lcov.info',
+      },
+    },
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -120,8 +181,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-update-json');
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-istanbul');
+  grunt.loadNpmTasks('grunt-istanbul-coverage');
+  grunt.loadNpmTasks('grunt-env');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-coveralls');
 
   // Default task.
-  grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'nodeunit', 'concurrent']);
+  grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'test', 'concurrent']);
+  grunt.registerTask('test', ['jshint', 'mochaTest:unit']);
+  grunt.registerTask('cover', ['clean:coverage', 'jshint', 'env:coverage', 'instrument', 'mochaTest:all',
+    'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
+  grunt.registerTask('build', ['clean', 'cover']);
 
 };
