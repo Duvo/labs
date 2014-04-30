@@ -1,6 +1,6 @@
 'use strict';
 
-var requireHelper = require('../require_helper');
+var requireHelper = require(process.env.TEST_DIR + '/require_helper');
 var Player = requireHelper('models/player');
 
 var expect = require('chai').expect;

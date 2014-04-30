@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   
   // load all grunt tasks matching the `grunt-*` pattern
   require('load-grunt-tasks')(grunt);
+  var path = require('path');
 
   // Project configuration.
   grunt.initConfig({
@@ -124,9 +125,14 @@ module.exports = function(grunt) {
       }
     },
     /** TESTS **/
-    env: {
+    env: {      
+      test: {
+        SERVER_DIR: path.resolve('server'),
+        TEST_DIR: path.resolve('test')
+      },
       coverage: {
-        APP_DIR_FOR_CODE_COVERAGE: '../test/coverage/instrument/server/'
+        SERVER_DIR: path.resolve('test/coverage/instrument/server'),
+        TEST_DIR: path.resolve('test')
       }
     },
     instrument: {
@@ -184,9 +190,12 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'test', 'concurrent']);
-  grunt.registerTask('test', ['jshint', 'mochaTest:unit']);
+  grunt.registerTask('test', ['jshint', 'env:test', 'mochaTest:unit']);
   grunt.registerTask('cover', ['clean:coverage', 'jshint', 'env:coverage', 'instrument', 'mochaTest:all',
-    'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
+    'storeCoverage', 'makeReport']);
   grunt.registerTask('build', ['clean', 'cover']);
+  
+  // Don't use, let Travis doing his job.
+  grunt.registerTask('travis', ['cover', 'coveralls', 'coverage']);
 
 };
