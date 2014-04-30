@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = function(grunt) {
+  
+  // load all grunt tasks matching the `grunt-*` pattern
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -71,7 +74,10 @@ module.exports = function(grunt) {
       },
       styles: {
         files: ['public/**/*.less'],
-        tasks: ['less']
+        tasks: ['less'],
+        options: {
+          livereload: true
+        }
       },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -79,15 +85,18 @@ module.exports = function(grunt) {
       },
       public: {
         files: '<%= jshint.public.src %>',
-        tasks: ['jshint:public']
+        tasks: ['jshint:public'],
+        options: {
+          livereload: true
+        }
       },
       server: {
         files: '<%= jshint.server.src %>',
-        tasks: ['jshint:server', 'nodeunit'],
+        tasks: ['jshint:server'],
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'nodeunit'],
+        tasks: ['jshint:test'],
       },
     },    
     nodemon: {
@@ -172,22 +181,6 @@ module.exports = function(grunt) {
       },
     },
   });
-
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-concurrent');
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-update-json');
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-istanbul');
-  grunt.loadNpmTasks('grunt-istanbul-coverage');
-  grunt.loadNpmTasks('grunt-env');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-coveralls');
 
   // Default task.
   grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'test', 'concurrent']);
