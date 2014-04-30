@@ -4,7 +4,7 @@
   "description": "Duvo development labs.",
   "main": "grunt",
   "scripts": {
-    "test": "grunt build"
+    "test": "grunt travis"
   },
   "repository": {
     "type": "git",
