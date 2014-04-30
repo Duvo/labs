@@ -192,10 +192,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'test', 'concurrent']);
   grunt.registerTask('test', ['jshint', 'env:test', 'mochaTest:unit']);
   grunt.registerTask('cover', ['clean:coverage', 'jshint', 'env:coverage', 'instrument', 'mochaTest:all',
-    'storeCoverage', 'makeReport']);
+    'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
   grunt.registerTask('build', ['clean', 'cover']);
-  
-  // Don't use, let Travis doing his job.
-  grunt.registerTask('travis', ['cover', 'coveralls', 'coverage']);
 
 };
