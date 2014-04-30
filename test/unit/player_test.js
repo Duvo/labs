@@ -3,13 +3,12 @@
 var requireHelper = require('../require_helper');
 var Player = requireHelper('models/player');
 
-var assert = require("assert");
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
+var expect = require('chai').expect;
+describe('Player', function() {
+  describe('contructor', function() {
+    it('should create a new Player with ID equals 1', function() {
       var player = new Player();
-      assert.equal(player.id, 1);
-      assert.equal(-1, [1, 2, 3].indexOf(0));
+      expect(player.id).to.equals(1);
     });
   });
 });
