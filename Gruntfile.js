@@ -106,15 +106,12 @@ module.exports = function(grunt) {
         options: {
           nodeArgs: ['--debug'],
           ignore: ['public/**', 'test/**'],
-          env: {
-            PORT: '<%= cfg.port %>'
-          },
           cwd: __dirname,
         }
       }
     },
     concurrent: {
-      tasks: ['nodemon','watch'],
+      tasks: ['env:dev', 'nodemon','watch'],
       options: {
         logConcurrentOutput: true
       }
@@ -125,14 +122,28 @@ module.exports = function(grunt) {
       }
     },
     /** TESTS **/
-    env: {      
+    env: {
+      dev: {
+        PORT: 3000,
+        SERVER_DIR: path.resolve('server'),
+      },
       test: {
+        PORT: 3000,
         SERVER_DIR: path.resolve('server'),
         TEST_DIR: path.resolve('test')
       },
       coverage: {
         SERVER_DIR: path.resolve('test/coverage/instrument/server'),
         TEST_DIR: path.resolve('test')
+      }
+    },
+    copy: {
+      instrument: {
+        files: [{
+            expand: true,
+            src: ['server/**/!(*.js)', 'public/**'],
+            dest: 'test/coverage/instrument',
+        }]
       }
     },
     instrument: {
@@ -151,6 +162,9 @@ module.exports = function(grunt) {
       },
       unit: {
         src: ['test/unit/**/*.js']
+      },
+      html: {
+        src: ['test/html/index_test.js']
       }
     },
     storeCoverage: {
@@ -189,10 +203,12 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['update_json', 'bower:install', 'less', 'jshint', 'test', 'concurrent']);
-  grunt.registerTask('test', ['jshint', 'env:test', 'mochaTest:unit']);
-  grunt.registerTask('cover', ['clean:coverage', 'jshint', 'env:coverage', 'instrument', 'mochaTest:all',
+  grunt.registerTask('default', ['test', 'env:dev', 'concurrent']);
+  
+  grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest:all']);
+  grunt.registerTask('cover', ['buildDev', 'env:coverage', 'instrument', 'copy:instrument', 'mochaTest:all',
     'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
-  grunt.registerTask('build', ['clean', 'cover']);
+
+  grunt.registerTask('buildDev', ['clean', 'jshint', 'bower:install', 'less']);
 
 };
