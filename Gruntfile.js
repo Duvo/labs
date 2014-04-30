@@ -111,7 +111,7 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      tasks: ['env:dev', 'nodemon','watch'],
+      tasks: ['nodemon','watch'],
       options: {
         logConcurrentOutput: true
       }
@@ -158,7 +158,7 @@ module.exports = function(grunt) {
           reporter: 'spec'
         },
       all: {
-        src: ['test/**/*.js']
+        src: ['test/!(coverage)/**/*.js']
       },
       unit: {
         src: ['test/unit/**/*.js']
@@ -209,6 +209,6 @@ module.exports = function(grunt) {
   grunt.registerTask('cover', ['buildDev', 'env:coverage', 'instrument', 'copy:instrument', 'mochaTest:all',
     'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
 
-  grunt.registerTask('buildDev', ['clean', 'jshint', 'bower:install', 'less']);
+  grunt.registerTask('buildDev', ['update_json', 'clean', 'jshint', 'bower:install', 'less']);
 
 };
