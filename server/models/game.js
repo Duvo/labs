@@ -4,12 +4,12 @@ function Game() {
   this.id = Game.newId();
   this.grid = Game.coolLetters;
 }
-
+/* istanbul ignore next */
 Game.randomLetter = function() {
   var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   return alpha.charAt(Math.floor(Math.random() * alpha.length));
 };
-
+/* istanbul ignore next */
 Game.randomLetters = function(height, width) {
   var grid = [];
   for (var i = 0; i < width; i++) {
