@@ -6,15 +6,15 @@ Labs
 [![devDependency Status](https://david-dm.org/Duvo/labs/dev-status.svg?theme=shields.io)](https://david-dm.org/Duvo/labs#info=devDependencies)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-Duvo development labs.
+> My personnal development labs. To try everything I want... and sometimes I would not.
 
 ## Installation
 
-### Requires
+### Requirements
 
-- [Node.js](http://nodejs.org/)
-- [npm](https://www.npmjs.org/)
-- The [Grunt](http://gruntjs.com/) command line interface: [grunt-cli](https://github.com/gruntjs/grunt-cli)
+- Node.js - [nodejs.org](http://nodejs.org/)
+- npm - [www.npmjs.org](https://www.npmjs.org/)
+- The [GruntJS](http://gruntjs.com/getting-started#installing-the-cli) command line interface - `npm install grunt-cli -g`
 
 ### Clone the repository
 
@@ -24,7 +24,7 @@ Duvo development labs.
 
     npm install
     
-### Build and run the server
+### Build, test, makes coffee and run the server
 
     grunt
     
