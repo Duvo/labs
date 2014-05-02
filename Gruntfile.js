@@ -8,7 +8,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    cfg: require('./server/config.js').port,
     update_json: {
       bower: {
         src: 'package.json',
@@ -123,16 +122,25 @@ module.exports = function(grunt) {
     },
     /** TESTS **/
     env: {
+      prod: {
+        ENV: 'PROD',
+        PORT: 80,
+        SERVER_DIR: path.resolve('dist/server'),
+      },
       dev: {
+        ENV: 'DEV',
         PORT: 3000,
         SERVER_DIR: path.resolve('server'),
       },
       test: {
-        PORT: 3000,
+        ENV: 'TEST',
+        PORT: 3001,
         SERVER_DIR: path.resolve('server'),
         TEST_DIR: path.resolve('test')
       },
       coverage: {
+        ENV: 'TEST',
+        PORT: 3001,
         SERVER_DIR: path.resolve('test/coverage/instrument/server'),
         TEST_DIR: path.resolve('test')
       }
@@ -158,13 +166,7 @@ module.exports = function(grunt) {
           reporter: 'spec'
         },
       all: {
-        src: ['test/!(coverage)/**/*.js']
-      },
-      unit: {
-        src: ['test/unit/**/*.js']
-      },
-      html: {
-        src: ['test/html/index_test.js']
+        src: ['test/!(coverage)/**/*_test.js']
       }
     },
     storeCoverage: {
@@ -183,10 +185,10 @@ module.exports = function(grunt) {
     coverage: {
       options: {
         thresholds: {
-          'statements': 50,
-          'branches': 0,
-          'lines': 50,
-          'functions': 10
+          'statements': 90,
+          'branches': 80,
+          'lines': 90,
+          'functions': 80
         },
         dir: 'coverage',
         root: 'test'
@@ -205,8 +207,8 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['test', 'env:dev', 'concurrent']);
   
-  grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest:all']);
-  grunt.registerTask('cover', ['buildDev', 'env:coverage', 'instrument', 'copy:instrument', 'mochaTest:all',
+  grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest']);
+  grunt.registerTask('cover', ['buildDev', 'env:coverage', 'instrument', 'copy:instrument', 'mochaTest',
     'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
 
   grunt.registerTask('buildDev', ['update_json', 'clean', 'jshint', 'bower:install', 'less']);

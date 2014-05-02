@@ -1,4 +1,5 @@
 {
+  "expr": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
