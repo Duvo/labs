@@ -126,23 +126,27 @@ module.exports = function(grunt) {
         ENV: 'PROD',
         PORT: 80,
         SERVER_DIR: path.resolve('dist/server'),
+        SOCKET_LOG: 1
       },
       dev: {
         ENV: 'DEV',
         PORT: 3000,
         SERVER_DIR: path.resolve('server'),
+        SOCKET_LOG: 3
       },
       test: {
         ENV: 'TEST',
         PORT: 3001,
         SERVER_DIR: path.resolve('server'),
-        TEST_DIR: path.resolve('test')
+        TEST_DIR: path.resolve('test'),
+        SOCKET_LOG: 3
       },
       coverage: {
         ENV: 'TEST',
         PORT: 3001,
         SERVER_DIR: path.resolve('test/coverage/instrument/server'),
-        TEST_DIR: path.resolve('test')
+        TEST_DIR: path.resolve('test'),
+        SOCKET_LOG: 1
       }
     },
     copy: {
@@ -167,6 +171,9 @@ module.exports = function(grunt) {
         },
       all: {
         src: ['test/!(coverage)/**/*_test.js']
+      },
+      page: {
+        src: ['test/page/**/*_test.js']
       }
     },
     storeCoverage: {
@@ -185,9 +192,9 @@ module.exports = function(grunt) {
     coverage: {
       options: {
         thresholds: {
-          'statements': 90,
+          'statements': 80,
           'branches': 80,
-          'lines': 90,
+          'lines': 80,
           'functions': 80
         },
         dir: 'coverage',
@@ -205,9 +212,11 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['test', 'env:dev', 'concurrent']);
+  grunt.registerTask('default', ['test', 'runDev']);
+  grunt.registerTask('runDev', ['env:dev', 'concurrent']);
   
   grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest']);
+  grunt.registerTask('testNew', ['buildDev', 'env:test', 'mochaTest:page']);
   grunt.registerTask('cover', ['buildDev', 'env:coverage', 'instrument', 'copy:instrument', 'mochaTest',
     'storeCoverage', 'makeReport', 'coveralls', 'coverage']);
 

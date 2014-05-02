@@ -8,21 +8,14 @@
 
 'use strict';
 
-switch (process.env.EN) {
-  /* istanbul ignore next */
-  case 'PROD':
-    global.CONFIG = require('./config.prod');
-    break;
-  default:
-    global.CONFIG = require('./config.dev');
-}
+global.CONFIG = require('./config');
 
 var express = require('express');
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-io.set('log level', global.CONFIG.socketLog);
+io.set('log level', process.env.SOCKET_LOG);
 
 app.set('views', global.CONFIG.viewsPath);
 app.set('view engine', 'jade');

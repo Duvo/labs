@@ -8,8 +8,7 @@ describe('Canvas route', function() {
 
   it('should respond with a 200', function(done) {
     request(app)
-            .get('/canvas')            
-            .expect(/Labs - Canvas/)
+            .get('/canvas')
             .expect(200, done);
   });
 

@@ -9,7 +9,6 @@ describe('Socket route', function() {
   it('should respond with a 200', function(done) {
     request(app)
             .get('/socket')
-            .expect(/Labs - Socket/)
             .expect(200, done);
   });
 });
