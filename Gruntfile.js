@@ -91,8 +91,11 @@ module.exports = function(grunt) {
         }
       },
       server: {
-        files: '<%= jshint.server.src %>',
+        files: ['<%= jshint.server.src %>', 'server/**/*.jade'],
         tasks: ['jshint:server'],
+        options: {
+          livereload: true
+        }
       },
       test: {
         files: '<%= jshint.test.src %>',

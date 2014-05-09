@@ -10,7 +10,12 @@ block scripts
 block content
   
   .container
-    h1=title
+    .page-header
+      h1=title
+        |  
+        small
+          span(class=['glyphicon', 'glyphicon-transfer'])
+          |  Two-ways binding UI with AngularJS
     .row
       section#draggable-tab(ng-controller="UiDraggableController", class=["tab", "col-sm-4"])
         h2

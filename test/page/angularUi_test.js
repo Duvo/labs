@@ -13,7 +13,7 @@ var url = 'http://localhost:' + process.env.PORT + '/angular-ui';
 describe('AngularUi page', function() {
   it('should contain Labs - AngularUi', function(done) {
     browser.visit(url).then(function() {
-      expect(browser.text("H1")).to.equals('Labs - AngularUi');
+      expect(browser.text("H1")).to.contain('Labs - AngularUi');
       done();
     }).fail(function(error) {
       done(error);

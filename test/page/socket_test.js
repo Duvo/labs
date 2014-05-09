@@ -13,7 +13,7 @@ var url = 'http://localhost:' + process.env.PORT  + '/socket';
 describe('Socket page', function() {
   it('should contain Labs - Socket', function(done) {
     browser.visit(url).then(function() {
-      expect(browser.text("H1")).to.equals('Labs - Socket');
+      expect(browser.text("H1")).to.contain('Labs - Socket');
       done();
     }).fail(function(error) {
       done(error);

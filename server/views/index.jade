@@ -6,7 +6,15 @@ block styles
 block content
 
   .container
-    h1=title
+    .jumbotron
+      .page-header
+        h1 Laboratory
+          small
+            |  
+            span(class=['glyphicon', 'glyphicon-chevron-left'])
+            span(class=['glyphicon', 'glyphicon-chevron-right'])
+            |  by 
+            a(href="https://github.com/Duvo/labs") Duvo
 
   script(src="/index/scripts/app.js")
   script(src="/index/scripts/controllers/main.js")

@@ -1,5 +1,5 @@
 'use strict';
-
+/* NO CANVAS SUPPORT WITH ZOMBIE
 var Browser = require("zombie");
 var browser = new Browser();
 
@@ -19,4 +19,4 @@ describe('Canvas page', function() {
       done(error);
     });
   });
-});
+});*/
