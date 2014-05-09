@@ -6,7 +6,7 @@ Labs
 [![devDependency Status](https://david-dm.org/Duvo/labs/dev-status.svg?theme=shields.io)](https://david-dm.org/Duvo/labs#info=devDependencies)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-> My personnal development labs. To try everything I want... and sometimes I would not.
+> My personal development labs. To try everything I want... 
 
 ## Installation
 
@@ -24,7 +24,7 @@ Labs
 
     npm install
     
-### Build, test, makes coffee and run the server
+### To build, test, make coffee and start the server
 
     grunt
     
