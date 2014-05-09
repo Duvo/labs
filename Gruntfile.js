@@ -99,16 +99,24 @@ module.exports = function(grunt) {
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test'],
-      },
-    },    
+        tasks: ['jshint:test']
+      }
+    },
+    forever: {
+      prod: {
+        options: {
+          index: 'server/server.js',
+          logDir: 'logs'
+        }
+      }
+    },
     nodemon: {
       dev: {
         script: 'server/server.js',
         options: {
           nodeArgs: ['--debug'],
           ignore: ['public/**', 'test/**'],
-          cwd: __dirname,
+          cwd: __dirname
         }
       }
     },
@@ -217,7 +225,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['test', 'runDev']);
   grunt.registerTask('runDev', ['env:dev', 'concurrent']);
-  grunt.registerTask('runProd', ['env:prod', 'concurrent']);
+  grunt.registerTask('runProd', ['env:prod', 'forever:prod:start']);
   
   grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest']);
   grunt.registerTask('testNew', ['buildDev', 'env:test', 'mochaTest:page']);
