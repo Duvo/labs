@@ -128,7 +128,7 @@ module.exports = function(grunt) {
       prod: {
         ENV: 'PROD',
         PORT: 80,
-        SERVER_DIR: path.resolve('dist/server'),
+        SERVER_DIR: path.resolve('server'),
         SOCKET_LOG: 1
       },
       dev: {
@@ -217,6 +217,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['test', 'runDev']);
   grunt.registerTask('runDev', ['env:dev', 'concurrent']);
+  grunt.registerTask('runProd', ['env:prod', 'concurrent']);
   
   grunt.registerTask('test', ['buildDev', 'env:test', 'mochaTest']);
   grunt.registerTask('testNew', ['buildDev', 'env:test', 'mochaTest:page']);
