@@ -7,11 +7,13 @@ var _game = function() {
           canvas,
           stage,
           world,
-          hero,
+          hero1,
+          hero2,
           w = 500,
           h = 300,
           assets = [],
-          keyDown = false;
+          spaceDown = false,
+          zeroDown = false;
 
   // holds all collideable objects
   var collideables = [];
@@ -57,10 +59,15 @@ var _game = function() {
 
     // creating the Hero, and assign an image
     // also position the hero in the middle of the screen
-    hero = new Hero(self);
-    hero.x = w / 2;
-    hero.y = h / 2 + 20;
-    world.addChild(hero);
+    hero1 = new Hero(self);
+    hero1.x = w / 2 - 50;
+    hero1.y = h / 2 + 20;
+    world.addChild(hero1);
+
+    hero2 = new Hero(self);
+    hero2.x = w / 2 + 50;
+    hero2.y = h / 2 + 20;
+    world.addChild(hero2);
 
     // add a platform for the hero to collide with
     self.addPlatform(w / 2 - 150 / 2, h / 1.25, 150);
@@ -87,7 +94,8 @@ var _game = function() {
 
   this.tick = function() {
     ticks++;
-    hero.tick();
+    hero1.tick();
+    hero2.tick();
     stage.update();
   };
 
@@ -109,15 +117,28 @@ var _game = function() {
     collideables.push(platform);
   };
 
-  this.handleKeyDown = function() {
-    if (!keyDown) {
-      keyDown = true;
-      hero.jump();
+  this.handleKeyDown = function(e) {
+    if (e.keyCode === 32) {
+      if (!spaceDown) {
+        spaceDown = true;
+        hero1.jump();
+      }
+    }
+    if (e.keyCode === 96) {
+      if (!zeroDown) {
+        zeroDown = true;
+        hero2.jump();
+      }
     }
   };
 
-  this.handleKeyUp = function() {
-    keyDown = false;
+  this.handleKeyUp = function(e) {
+    if (e.keyCode === 32) {
+      spaceDown = false;
+    }
+    if (e.keyCode === 96) {
+      zeroDown = false;
+    }
   };
 
   self.preloadResources();
