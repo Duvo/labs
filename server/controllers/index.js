@@ -15,3 +15,7 @@ exports.canvas = function(req, res) {
 exports.angularUI = function(req, res) {
   res.render('angular-ui', {page: 'angular-ui', title: 'Labs - AngularUi'});
 };
+
+exports.realTime = function(req, res) {
+  res.render('real-time', {page: 'real-time', title: 'Labs - Real-Time'});
+};

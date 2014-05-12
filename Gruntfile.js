@@ -41,6 +41,7 @@ module.exports = function(grunt) {
           'public/angular-ui/styles/main.css' : 'public/angular-ui/lessStyles/main.less',
           'public/index/styles/main.css' : 'public/index/lessStyles/main.less',
           'public/canvas/styles/main.css' : 'public/canvas/lessStyles/main.less',
+          'public/real-time/styles/main.css' : 'public/real-time/lessStyles/main.less',
         }
       }
     },

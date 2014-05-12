@@ -9,4 +9,5 @@ module.exports = function(app) {
   app.get('/angular-ui', index.angularUI);
   app.get('/canvas', index.canvas);
   app.get('/socket', index.socket);
+  app.get('/real-time', index.realTime);
 };

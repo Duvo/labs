@@ -30,4 +30,5 @@ require('./routes/index')(app);
 
 io.sockets.on('connection', function(socket) {
   require('./routes/socket')(socket);
+  require('./routes/real-time')(socket);
 });
