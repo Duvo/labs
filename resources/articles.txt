@@ -1,0 +1,15 @@
+http://www.mine-control.com/zack/timesync/timesync.html
+http://framework.realtime.co/blog/building-a-multiplayer-mobile-game.html
+http://buildnewgames.com/real-time-multiplayer/
+http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/
+
+// Super article + exemple
+http://www.gabrielgambetta.com/fast_paced_multiplayer.html
+
+// Prediction
+http://gafferongames.com/networking-for-game-programmers/what-every-programmer-needs-to-know-about-game-networking/
+http://fabiensanglard.net/quakeSource/quakeSourcePrediction.php
+https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization
+
+// Debugging
+http://gafferongames.com/networking-for-game-programmers/debugging-multiplayer-games/
