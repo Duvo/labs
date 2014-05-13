@@ -15,6 +15,8 @@ var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
+var realTime = require('./controllers/real-time');
+
 console.log(process.env.PORT);
 io.set('log level', process.env.SOCKET_LOG);
 
@@ -27,6 +29,13 @@ server.listen(process.env.PORT, function() {
 });
 
 require('./routes/index')(app);
+
+var frequency = 20; // ticks/s
+realTime.initialize(frequency, io.sockets);
+realTime.start();
+if (process.env.ENV === 'TEST') {
+  realTime.stop();
+}
 
 io.sockets.on('connection', function(socket) {
   require('./routes/socket')(socket);

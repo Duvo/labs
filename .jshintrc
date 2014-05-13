@@ -19,7 +19,6 @@
     "document": false,
     "angular": false,
     "location": false,
-    "io": true,
     /* TEST */
     "describe"   : false,
     "it"         : false,

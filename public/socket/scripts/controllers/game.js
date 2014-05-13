@@ -1,3 +1,5 @@
+/* global io */
+
 angular.module('app').controller('GameController', ['$scope',
   function($scope) {
     'use strict';

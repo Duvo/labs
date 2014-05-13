@@ -2,7 +2,7 @@ extends layout
 
 block scripts
   script(src="/bower_components/easeljs/lib/easeljs-0.7.1.min.js")
-  script(src="/bower_components/createjs-tweenjs/lib/tweenjs-0.5.1.min.js")
+  script(src="/bower_components/socket.io-client/dist/socket.io.js")
 
 block styles
   link(rel="stylesheet", href="/real-time/styles/main.css")
@@ -16,5 +16,10 @@ block content
           span(class=['glyphicon', 'glyphicon-time'])
           |  Multiplayer game
 
+    p Cube lifetime: {{lifeTime}}
+    canvas#mainCanvas(width="500" height="2000") Alternate content
+
+  script(src="/real-time/scripts/canvas/hero.js")
+  script(src="/real-time/scripts/canvas/game.js")
   script(src="/real-time/scripts/app.js")
   script(src="/real-time/scripts/controllers/main.js")
