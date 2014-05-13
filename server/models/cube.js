@@ -8,7 +8,6 @@ Cube.prototype.initialize = function() {
   this.position = {x: 200, y: 100}; // px
   this.speed = 40;
   this.velocity = {x: 0, y: 0}; // px/s
-  this.slowdown = 10; // px/s
   this.lifeTime = 0;
   this.inputs = [];
 };
