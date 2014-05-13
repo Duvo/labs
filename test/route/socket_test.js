@@ -7,6 +7,7 @@ var app = requireHelper('server.js');
 describe('Socket route', function() {
 
   it('should respond with a 200', function(done) {
+    this.timeout(5000);
     request(app)
             .get('/socket')
             .expect(200, done);

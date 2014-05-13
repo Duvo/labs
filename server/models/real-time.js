@@ -23,8 +23,6 @@ RealTime.prototype.start = function() {
 
 RealTime.prototype.tick = function() {
   var current = new Date().getTime();
-  var interval = current - this.lastTick;
-  console.log(interval);
 
   if (this.cube instanceof Cube) {
     this.cube.process(this.lastTick, current);

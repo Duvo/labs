@@ -14,6 +14,7 @@ var options = {
 describe('Sockets', function() {
   var client1, client2;
   before(function(done) {
+    this.timeout(5000);
     client1 = io.connect(url, options);
     client1.on('connect', function() {
       client2 = io.connect(url, options);

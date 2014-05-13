@@ -30,7 +30,7 @@ server.listen(process.env.PORT, function() {
 
 require('./routes/index')(app);
 
-var frequency = 20; // ticks/s
+var frequency = 10; // ticks/s
 realTime.initialize(frequency, io.sockets);
 realTime.start();
 if (process.env.ENV === 'TEST') {
