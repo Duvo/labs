@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           'license',
           'homepage',
         ]
-      }
+        }
     },
     bower: {
       install: {
