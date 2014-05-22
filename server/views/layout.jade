@@ -7,31 +7,31 @@ html(ng-app="app", ng-controller="MainController")
     meta(name="description", content="Duvo development labs.")
     meta(name="viewport", content="width=device-width")
     link(href="/favicon.ico", rel="shortcut icon", type="image/vnd.microsoft.icon")
-    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
-    link(rel="stylesheet", href="/styles/layout.css")
+    link(rel="stylesheet", href="/bower/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/layout/styles/layout.css")
     block styles
     
     <!--[if lt IE 9]>
-    script(src="/bower_components/es5-shim/es5-shim.js")
-    script(src="/bower_components/json3/lib/json3.min.js")
+    script(src="/bower/es5-shim/es5-shim.min.js")
+    script(src="/bower/json3/lib/json3.min.js")
     <![endif]-->
-    script(src="/bower_components/jquery/dist/jquery.js")
-    script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
-    script(src="/bower_components/angular/angular.js")
+    script(src="/bower/jquery/dist/jquery.js")
+    script(src="/bower/angular/angular.min.js")
+    script(src="/bower/angular-bootstrap/ui-bootstrap-tpls.min.js")    
     block scripts
 
   body
     nav(class=["navbar", "navbar-inverse", "navbar-fixed-top"], role="navigation")
       .container
         .navbar-header
-          button(type="button", class="navbar-toggle", data-toggle="collapse", data-target=".navbar-collapse")
+          button(type="button", class="navbar-toggle", ng-click="navbarCollapsed = !navbarCollapsed")
             span.icon-bar
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href="/")
             img(src="/img/labs-logo.png", alt="Labs")
             |  Labs
-        div(class=["collapse", "navbar-collapse"])
+        div(class=["collapse", "navbar-collapse"], collapse="!navbarCollapsed")
           ul(id="main-nav", class=["nav", "navbar-nav"])
             li(class=page==="index" ? "active" : "")
               a(href="/") Home
@@ -44,4 +44,5 @@ html(ng-app="app", ng-controller="MainController")
             li(class=page==="real-time" ? "active" : "")
               a(href="/real-time") Real-time
 
+    script(src="/layout/scripts/app.js")
     block content

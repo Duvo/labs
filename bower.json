@@ -37,6 +37,7 @@
 		"angular": "~1.2.16",
 		"angular-ui-sortable": "~0.12.4",
 		"easeljs": "*",
-		"createjs-tweenjs": "*"
+		"createjs-tweenjs": "*",
+		"angular-bootstrap": "~0.11.0"
 	}
 }

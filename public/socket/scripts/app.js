@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('app', []).config(function() {
+angular.module('app', ['layout']).config(function() {
 });

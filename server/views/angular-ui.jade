@@ -3,9 +3,9 @@ extends layout
 block styles
   link(rel="stylesheet", href="/angular-ui/styles/main.css")
 
-block scripts  
-  <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-  <script src="/bower_components/angular-ui-sortable/sortable.js"></script>
+block scripts
+  script(src="/bower/jquery-ui/ui/jquery-ui.js")
+  script(src="/bower/angular-ui-sortable/sortable.js")
 
 block content
   
@@ -65,13 +65,7 @@ block content
           .nested-tab(ng-controller="UiNestedSubController")
             h3 Sub Controller
             input.actionnable(type="text" ng-model="main.value")
-            button.actionnable(type="button", ng-click="change()") Change
-
-    .row
-      section#comingSoon(ng-controller="UiComingSoonController", class=["tab", "col-sm-4"])
-        h2
-          span(class=["glyphicon", "glyphicon-time"])
-          |  Coming soon    
+            button.actionnable(type="button", ng-click="change()") Change   
 
   script(src="/angular-ui/scripts/app.js")
   script(src="/angular-ui/scripts/controllers/main.js")

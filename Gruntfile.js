@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
-          'public/styles/layout.css' : 'public/lessStyles/layout.less',
+          'public/layout/styles/layout.css' : 'public/layout/lessStyles/layout.less',
           'public/socket/styles/main.css' : 'public/socket/lessStyles/main.less',
           'public/angular-ui/styles/main.css' : 'public/angular-ui/lessStyles/main.less',
           'public/index/styles/main.css' : 'public/index/lessStyles/main.less',
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
         script: 'server/server.js',
         options: {
           nodeArgs: ['--debug'],
-          ignore: ['public/**', 'test/**'],
+          watch: ['server/**/*'],
           cwd: __dirname
         }
       }

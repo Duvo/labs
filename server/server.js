@@ -17,12 +17,12 @@ var io = require('socket.io').listen(server);
 
 var realTime = require('./controllers/real-time');
 
-console.log(process.env.PORT);
 io.set('log level', process.env.SOCKET_LOG);
 
 app.set('views', global.CONFIG.viewsPath);
 app.set('view engine', 'jade');
-app.use(express.static(global.CONFIG.root + 'public/'));
+app.use(express.static(global.CONFIG.root + '/public'));
+app.use('/bower', express.static(global.CONFIG.root + '/bower_components'));
 
 server.listen(process.env.PORT, function() {
   console.log('Listening on port %d', server.address().port);
