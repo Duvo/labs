@@ -54,9 +54,6 @@ module.exports = function(grunt) {
       },
       public: {
         src: ['public/**/*.js'],
-        options: {
-          ignores: ['**/bower_components/**/*']
-        }
       },
       server: {
         src: ['server/**/*.js']
@@ -165,7 +162,7 @@ module.exports = function(grunt) {
       instrument: {
         files: [{
             expand: true,
-            src: ['server/**/!(*.js)', 'public/**'],
+            src: ['server/**/!(*.js)', 'public/**', 'bower_components/**'],
             dest: 'test/coverage/instrument',
         }]
       }
